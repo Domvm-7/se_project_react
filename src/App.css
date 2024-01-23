@@ -1,20 +1,19 @@
-.header {
-  background-color: purple;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 60px;
+.weather {
+  position: relative;
+}
+
+.weather__info {
+  position: absolute;
+  top: 20px;
+  left: 16px;
+  color: white;
+  font-size: 36px;
+}
+
+.weather__image {
+  width: 100%;
+}
+
+.main {
   padding: 0 20px;
-}
-
-.header__logo {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
-.header__avatar-logo {
-  display: flex;
-  gap: 20px;
-  align-items: center;
 }
