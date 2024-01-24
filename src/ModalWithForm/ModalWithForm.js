@@ -11,9 +11,11 @@ const ModalWithForm = ({
   return (
     <div className={`modal modal__type_${name}`}>
       <div className="modal__content">
-        <button type="button" onClick={onClose}>
-          Close
-        </button>
+        <button
+          className="modal__close-button"
+          type="button"
+          onClick={onClose}
+        ></button>
         <h3>{title}</h3>
         <form>
           {children}
