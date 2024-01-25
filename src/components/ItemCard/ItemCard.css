@@ -1,5 +1,7 @@
 .card__name {
   text-align: center;
+  position: relative;
+  top: 60px;
 }
 
 .card__image {
