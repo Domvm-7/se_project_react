@@ -14,12 +14,14 @@
   background-color: white;
   max-width: 496px;
   max-height: 436px;
-  width: 100%;
   border-radius: 20px;
-  padding: 34px 36px;
+  padding: 5px 30px 30px 30px;
 }
 
 .modal__close-button {
+  position: relative;
+  top: 20px;
+  left: 425px;
   background-image: url("../images/close-button.svg");
   background-repeat: no-repeat;
   border: none;
@@ -27,9 +29,14 @@
   width: 20px;
 }
 
+.modal__close-button:hover {
+  cursor: pointer;
+}
+
 .modal__title {
   font-size: 16px;
   margin-top: 0;
+  margin-bottom: 20px;
 }
 
 .modal__label {
@@ -66,4 +73,8 @@
   border-radius: 5px;
   font-size: 15px;
   margin-top: 30px;
+}
+
+.modal__submit-button:hover {
+  cursor: pointer;
 }
