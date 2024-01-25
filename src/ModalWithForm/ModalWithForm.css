@@ -13,6 +13,7 @@
 .modal__content {
   background-color: white;
   max-width: 496px;
+  max-height: 436px;
   width: 100%;
   border-radius: 20px;
   padding: 34px 36px;
@@ -41,4 +42,12 @@
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 20px;
+}
+
+.modal__radio {
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }

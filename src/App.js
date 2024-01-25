@@ -48,7 +48,7 @@ function App() {
             />
           </label>
           <p>Select Weather Type:</p>
-          <div>
+          <div className="modal__radio">
             <div>
               <input type="radio" id="hot" value="hot" />
               <label>Hot</label>
