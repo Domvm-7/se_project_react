@@ -44,7 +44,7 @@ function App() {
       <Footer />
       {activeModal === "create" && (
         <ModalWithForm title="New Garment" onClose={handleCloseModal}>
-          <label className="modal__label" key="name-label">
+          <label className="modal__label">
             Name
             <input
               className="modal__input"
@@ -55,7 +55,7 @@ function App() {
               placeholder="Name"
             />
           </label>
-          <label className="modal__label" key="image-label">
+          <label className="modal__label">
             Image
             <input
               className="modal__input"
@@ -66,9 +66,9 @@ function App() {
               placeholder="Image Url"
             />
           </label>
-          <div className="modal__weather" key="weather-div">
+          <div className="modal__weather">
             <p>Select Weather Type:</p>
-            <div className="modal__weather-input" key="hot-input">
+            <div className="modal__weather-input">
               <input
                 className="modal__weather-radio"
                 type="radio"
@@ -76,15 +76,11 @@ function App() {
                 value="hot"
                 name="weatherType"
               />
-              <label
-                className="modal__weather-label"
-                key="hot-label"
-                htmlFor="hot"
-              >
+              <label className="modal__weather-label" htmlFor="hot">
                 Hot
               </label>
             </div>
-            <div className="modal__weather-input" key="warm-input">
+            <div className="modal__weather-input">
               <input
                 className="modal__weather-radio"
                 type="radio"
@@ -92,15 +88,11 @@ function App() {
                 value="warm"
                 name="weatherType"
               />
-              <label
-                className="modal__weather-label"
-                key="warm-label"
-                htmlFor="warm"
-              >
+              <label className="modal__weather-label" htmlFor="warm">
                 Warm
               </label>
             </div>
-            <div className="modal__weather-input" key="cold-input">
+            <div className="modal__weather-input">
               <input
                 className="modal__weather-radio"
                 type="radio"
@@ -108,11 +100,7 @@ function App() {
                 value="cold"
                 name="weatherType"
               />
-              <label
-                className="modal__weather-label"
-                key="cold-label"
-                htmlFor="cold"
-              >
+              <label className="modal__weather-label" htmlFor="cold">
                 Cold
               </label>
             </div>
