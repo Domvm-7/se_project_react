@@ -40,7 +40,7 @@ function App() {
       <Footer />
       {activeModal === "create" && (
         <ModalWithForm title="New Garment" onClose={handleCloseModal}>
-          <label className="modal__label">
+          <label className="modal__label" key="name-label">
             Name
             <input
               className="modal__input"
@@ -51,7 +51,7 @@ function App() {
               placeholder="Name"
             />
           </label>
-          <label className="modal__label">
+          <label className="modal__label" key="image-label">
             Image
             <input
               className="modal__input"
@@ -62,9 +62,9 @@ function App() {
               placeholder="Image Url"
             />
           </label>
-          <div className="modal__weather">
+          <div className="modal__weather" key="weather-div">
             <p>Select Weather Type:</p>
-            <div className="modal__weather-input">
+            <div className="modal__weather-input" key="hot-input">
               <input
                 className="modal__weather-radio"
                 type="radio"
@@ -73,7 +73,7 @@ function App() {
               />
               <label className="modal__weather-label">Hot</label>
             </div>
-            <div className="modal__weather-input">
+            <div className="modal__weather-input" key="warm-input">
               <input
                 className="modal__weather-radio"
                 type="radio"
@@ -82,7 +82,7 @@ function App() {
               />
               <label className="modal__weather-label">Warm</label>
             </div>
-            <div className="modal__weather-input">
+            <div className="modal__weather-input" key="cold-input">
               <input
                 className="modal__weather-radio"
                 type="radio"
