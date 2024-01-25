@@ -27,6 +27,10 @@
   width: 20px;
 }
 
+.modal__title {
+  font-size: 16px;
+}
+
 .modal__label {
   display: flex;
   flex-direction: column;
@@ -44,7 +48,7 @@
   margin-bottom: 20px;
 }
 
-.modal__radio {
+.modal__weather {
   font-size: 16px;
   font-weight: bold;
   display: flex;
