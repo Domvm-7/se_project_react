@@ -63,6 +63,20 @@
   flex-direction: column;
   gap: 5px;
 }
+.modal__weather-label {
+  margin-left: 7px;
+}
+
+.modal__weather-radio {
+  margin-left: 0;
+  height: 16px;
+  width: 16px;
+}
+
+.modal__weather-input {
+  display: flex;
+  align-items: center;
+}
 
 .modal__submit-button {
   width: 124px;
