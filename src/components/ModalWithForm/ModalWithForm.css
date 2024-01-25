@@ -21,7 +21,7 @@
   position: relative;
   top: 20px;
   left: 425px;
-  background-image: url("../images/close-button.svg");
+  background-image: url("/src/images/close-button.svg");
   background-repeat: no-repeat;
   border: none;
   height: 20px;
