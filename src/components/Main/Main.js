@@ -10,13 +10,17 @@ function Main({ weatherTemp, onSelectCard }) {
   console.log(currentTemperatureUnit);
   const temp = weatherTemp?.temperature?.[currentTemperatureUnit];
   const weatherType = useMemo(() => {
-    if (temp >= 86) {
-      return "hot";
-    } else if (temp >= 66 && temp <= 85) {
-      return "warm";
-    } else if (temp <= 65) {
-      return "cold";
+    const numericTemp = parseInt(temp);
+    if (!isNaN(numericTemp)) {
+      if (numericTemp >= 86) {
+        return "hot";
+      } else if (numericTemp >= 66 && numericTemp <= 85) {
+        return "warm";
+      } else if (numericTemp <= 65) {
+        return "cold";
+      }
     }
+    return "unknown";
   }, [weatherTemp]);
 
   console.log(weatherType);
