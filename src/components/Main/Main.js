@@ -8,7 +8,7 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 function Main({ weatherTemp, onSelectCard }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   console.log(currentTemperatureUnit);
-  const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || 999;
+  const temp = weatherTemp?.temperature?.[currentTemperatureUnit];
   const weatherType = useMemo(() => {
     if (temp >= 86) {
       return "hot";
@@ -32,7 +32,7 @@ function Main({ weatherTemp, onSelectCard }) {
     <main className="main">
       <WeatherCard day={true} type="cloudy" weatherTemp={temp} />
       <section className="card__section" id="card-section">
-        Today is {temp} F / You may want to wear:
+        Today is {temp} / You may want to wear:
         <div className="card__items">
           {filteredCards.map((item, _id) => (
             <ItemCard key={item._id} item={item} onSelectCard={onSelectCard} />
