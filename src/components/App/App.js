@@ -36,6 +36,7 @@ function App() {
     getForecastWeather()
       .then((data) => {
         const temperature = parseWeatherData(data);
+        console.log(temperature);
         setTemp(temperature);
       })
       .catch((error) => {
