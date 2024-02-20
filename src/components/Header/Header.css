@@ -31,3 +31,9 @@
   cursor: pointer;
   opacity: 0.7;
 }
+
+.header__name {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
