@@ -14,10 +14,10 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
     setUrl(e.target.value);
   };
 
-  const [] = useState("");
-  const handleTempChange = (e) => {
+  const [weather, setWeather] = useState("");
+  const handleWeatherChange = (e) => {
     console.log(e.target.value);
-    setUrl(e.target.value);
+    setWeather(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -65,9 +65,9 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             className="modal__weather-radio"
             type="radio"
             id="hot"
-            value="hot"
+            value={weather}
             name="weatherType"
-            onChange={handleTempChange}
+            onChange={handleWeatherChange}
           />
           <label className="modal__weather-label" htmlFor="hot">
             Hot
@@ -78,9 +78,9 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             className="modal__weather-radio"
             type="radio"
             id="warm"
-            value="warm"
+            value={weather}
             name="weatherType"
-            onChange={handleTempChange}
+            onChange={handleWeatherChange}
           />
           <label className="modal__weather-label" htmlFor="warm">
             Warm
@@ -91,9 +91,9 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             className="modal__weather-radio"
             type="radio"
             id="cold"
-            value="cold"
+            value={weather}
             name="weatherType"
-            onChange={handleTempChange}
+            onChange={handleWeatherChange}
           />
           <label className="modal__weather-label" htmlFor="cold">
             Cold
