@@ -8,6 +8,7 @@ import { parseWeatherData, getForecastWeather } from "../../utils/weatherApi";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { Switch, Route } from "react-router-dom/cjs/react-router-dom";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import api from "../../utils/api";
 
 function App() {
   const weatherTemp = "75°F";
@@ -30,7 +31,10 @@ function App() {
   };
 
   const onAddItem = (values) => {
-    console.log(values);
+    api.addItem(values.name, values.imageUrl, values.weather).then(() => {
+      console.log("Item added successfully");
+      handleCloseModal();
+    });
   };
 
   const handleToggleSwitchChange = () => {
@@ -39,6 +43,14 @@ function App() {
   };
 
   useEffect(() => {
+    api
+      .getItems()
+      .then((items) => {
+        console.log("Fetched items:", items);
+      })
+      .catch((error) => {
+        console.error("Error fetching items:", error);
+      });
     getForecastWeather()
       .then((data) => {
         const temperature = parseWeatherData(data);
