@@ -1,0 +1,22 @@
+.sidebar {
+  display: flex;
+  position: absolute;
+  top: 119px;
+  left: 40px;
+  width: 257px;
+  height: 56px;
+}
+
+.sidebar__avatar {
+  height: 56px;
+  width: 56px;
+  padding-right: 10px;
+}
+
+.sidebar__name {
+  font-size: 20px;
+  height: 25px;
+  line-height: 24.8px;
+  font-weight: 700;
+  width: 229px;
+}

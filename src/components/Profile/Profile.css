@@ -1,0 +1,25 @@
+.profile__items {
+  display: flex;
+  position: absolute;
+  top: 119px;
+  left: 385px;
+}
+
+.profile__items-your {
+  font-size: 20px;
+  line-height: 24.8px;
+  font-weight: 700;
+}
+
+.profile_profile__button {
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+  font-size: 20px;
+  opacity: 60%;
+}
+
+.profile_profile__button:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}

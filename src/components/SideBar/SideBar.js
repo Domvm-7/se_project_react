@@ -4,9 +4,9 @@ import "./SideBar.css";
 
 const SideBar = () => {
   return (
-    <div>
-      <img src={avatar} alt="avatar" />
-      <h3>Dominic Martinez</h3>
+    <div className="sidebar">
+      <img className="sidebar__avatar" src={avatar} alt="avatar" />
+      <h3 className="sidebar__name">Dominic Martinez</h3>
     </div>
   );
 };
