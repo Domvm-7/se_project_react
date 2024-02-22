@@ -10,8 +10,6 @@ import { Switch, Route } from "react-router-dom/cjs/react-router-dom";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import api from "../../utils/api";
 import Profile from "../Profile/Profile";
-import SideBar from "../SideBar/SideBar";
-import ClothesSection from "../ClothesSection/ClothesSection";
 
 function App() {
   const weatherTemp = "75°F";
@@ -76,8 +74,6 @@ function App() {
             <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
           </Route>
         </Switch>
-        <Route path="/profile" component={ClothesSection}></Route>
-        <Route path="/profile" component={SideBar}></Route>
         <Route path="/profile" component={Profile}></Route>
         <Footer />
         {activeModal === "create" && (
