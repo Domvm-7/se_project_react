@@ -73,7 +73,7 @@ function App() {
             <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
           </Route>
         </Switch>
-        <Route path="/profile">Profile</Route>
+        <Route path="/profile"></Route>
         <Footer />
         {activeModal === "create" && (
           <AddItemModal
