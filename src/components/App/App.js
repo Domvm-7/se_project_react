@@ -46,12 +46,13 @@ function App() {
   const onAddItem = (values) => {
     api
       .addItem(values.name, values.imageUrl, values.weather)
-      .then(() => {
+      .then((response) => {
         console.log("Item added successfully");
         handleCloseModal();
         setCards([
           ...cards,
           {
+            id: response.data.id, // Assuming response.data.id contains the ID from the API
             name: values.name,
             imageUrl: values.imageUrl,
             weather: values.weather,
@@ -60,6 +61,7 @@ function App() {
       })
       .catch((error) => {
         console.error("Error adding item:", error);
+        // Handle error as needed
       });
   };
 
