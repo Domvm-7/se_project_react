@@ -12,7 +12,7 @@ import api from "../../utils/api";
 import Profile from "../Profile/Profile";
 
 function App() {
-  const weatherTemp = "75°F";
+  const [cards, setCards] = useState([]);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
@@ -31,16 +31,32 @@ function App() {
     setSelectedCard(card);
   };
 
+  const handleRemoveCard = (cardToRemove) => {
+    setCards(cards.filter((card) => card !== cardToRemove));
+  };
+
   const onAddItem = (values) => {
-    api.addItem(values.name, values.imageUrl, values.weather).then(() => {
-      console.log("Item added successfully");
-      handleCloseModal();
-    });
+    api
+      .addItem(values.name, values.imageUrl, values.weather)
+      .then(() => {
+        console.log("Item added successfully");
+        handleCloseModal();
+        setCards([
+          ...cards,
+          {
+            name: values.name,
+            imageUrl: values.imageUrl,
+            weather: values.weather,
+          },
+        ]);
+      })
+      .catch((error) => {
+        console.error("Error adding item:", error);
+      });
   };
 
   const handleToggleSwitchChange = () => {
-    if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
-    if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
+    setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
 
   useEffect(() => {
@@ -48,6 +64,7 @@ function App() {
       .getItems()
       .then((items) => {
         console.log("Fetched items:", items);
+        setCards(items);
       })
       .catch((error) => {
         console.error("Error fetching items:", error);
@@ -71,7 +88,12 @@ function App() {
         <Header onCreateModal={handleCreateModal} />
         <Switch>
           <Route exact path="/">
-            <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
+            <Main
+              weatherTemp={temp}
+              onSelectCard={handleSelectedCard}
+              cards={cards}
+              onRemoveCard={handleRemoveCard}
+            />
           </Route>
         </Switch>
         <Route path="/profile" component={Profile}></Route>
