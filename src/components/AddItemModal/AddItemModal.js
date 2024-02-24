@@ -1,29 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
   const [name, setName] = useState("");
+  const [link, setUrl] = useState("");
+  const [weather, setWeather] = useState("");
+
+  // Handle changes for name input
   const handleNameChange = (e) => {
-    console.log(e.target.value);
     setName(e.target.value);
   };
 
-  const [link, setUrl] = useState("");
+  // Handle changes for URL input
   const handleUrlChange = (e) => {
-    console.log(e.target.value);
     setUrl(e.target.value);
   };
 
-  const [weather, setWeather] = useState("");
+  // Handle changes for weather input
   const handleWeatherChange = (e) => {
-    console.log(e.target.value);
     setWeather(e.target.value);
   };
 
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     onAddItem({ name, link });
   };
+
+  // Reset state values when modal is opened
+  useEffect(() => {
+    if (isOpen) {
+      setName("");
+      setUrl("");
+      setWeather("");
+    }
+  }, [isOpen]);
 
   return (
     <ModalWithForm
@@ -65,8 +76,9 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             className="modal__weather-radio"
             type="radio"
             id="hot"
-            value={weather}
+            value="hot"
             name="weatherType"
+            checked={weather === "hot"}
             onChange={handleWeatherChange}
           />
           <label className="modal__weather-label" htmlFor="hot">
@@ -78,8 +90,9 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             className="modal__weather-radio"
             type="radio"
             id="warm"
-            value={weather}
+            value="warm"
             name="weatherType"
+            checked={weather === "warm"}
             onChange={handleWeatherChange}
           />
           <label className="modal__weather-label" htmlFor="warm">
@@ -91,8 +104,9 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             className="modal__weather-radio"
             type="radio"
             id="cold"
-            value={weather}
+            value="cold"
             name="weatherType"
+            checked={weather === "cold"}
             onChange={handleWeatherChange}
           />
           <label className="modal__weather-label" htmlFor="cold">
