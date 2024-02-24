@@ -1,6 +1,6 @@
 import React from "react";
 import "./ClothesSection.css";
-import ItemCard from "../ItemCard/ItemCard"; // Import the ItemCard component
+import ItemCard from "../ItemCard/ItemCard";
 
 const ClothesSection = ({ items = [], onSelectCard }) => (
   <div className="clothes-section">
