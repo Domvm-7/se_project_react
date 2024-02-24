@@ -68,3 +68,35 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+Objective
+In this sprint, you'll continue working on the “WTWR” web application. Your goal for this iteration is to continue implementing functionality using the React features you've just learned. You will implement the following:
+A temperature unit toggle switch using React context
+A profile page route using React Router
+Form submission using controlled components or refs
+You'll also set up a mock server and write some code to make API calls to it. This mock server will mimic the behavior of the backend that you'll start building in Sprint 12.
+
+Step 1. Create the markup
+Step 2. Create a currentTemperatureUnit state in the root component
+Step 3. Create a context object
+Step 4. Extract a new value from the weather API
+Step 5. Use context in ToggleSwitch
+Step 6. Use context in WeatherCard
+Step 7. Use context in Main
+
+Add a /profile route
+Step 1. Create a new Profile component
+Step 2. Install React Router
+Step 3. Configure routes
+Step 4. Add navigation links to Header
+
+Complete the form for adding a clothing item
+Step 1. Create the AddItemModal component
+Step 2. Save an item
+
+Add functionality to delete cards
+Step 1. Add a delete button
+
+Set up a mock server
+
+Make API calls
