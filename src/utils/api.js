@@ -1,19 +1,17 @@
+import { processServerResponse } from "./utils";
+
 const baseUrl = "http://localhost:3001";
 
 const api = {
   baseUrl: baseUrl,
   getItems: () => {
     return fetch(`${baseUrl}/items`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
+      .then(processServerResponse)
       .catch((error) => {
         console.error("Error fetching items:", error);
       });
   },
+
   addItem: (name, imageUrl, weather) => {
     return fetch(`${baseUrl}/items`, {
       method: "POST",
