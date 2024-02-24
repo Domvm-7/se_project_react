@@ -32,7 +32,15 @@ function App() {
   };
 
   const handleRemoveCard = (cardToRemove) => {
-    setCards(cards.filter((card) => card !== cardToRemove));
+    api
+      .deleteItem(cardToRemove._id)
+      .then(() => {
+        setCards(cards.filter((card) => card !== cardToRemove));
+        console.log("Card removed successfully from server.");
+      })
+      .catch((error) => {
+        console.error("Error removing card from server:", error);
+      });
   };
 
   const onAddItem = (values) => {
