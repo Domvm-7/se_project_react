@@ -47,7 +47,8 @@ function App() {
     api
       .addItem(values.name, values.imageUrl, values.weather)
       .then((response) => {
-        if (response.data && response.data.id) {
+        if (response && response.data && response.data.id) {
+          // Handle successful response
           console.log("Item added successfully");
           handleCloseModal();
           setCards([
@@ -60,7 +61,9 @@ function App() {
             },
           ]);
         } else {
-          console.error("Error adding item: Invalid response format");
+          // Handle unexpected response format
+          console.error("Invalid response format:", response);
+          // Display an error message to the user
         }
       })
       .catch((error) => {
