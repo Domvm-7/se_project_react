@@ -105,10 +105,10 @@ function App() {
               onRemoveCard={handleRemoveCard}
             />
           </Route>
+          <Route path="/profile">
+            <Profile onCreateModal={handleCreateModal} />
+          </Route>
         </Switch>
-        <Route path="/profile" component={Profile}>
-          <Profile onCreateModal={handleCreateModal} />
-        </Route>
         <Footer />
         {activeModal === "create" && (
           <AddItemModal
