@@ -1,15 +1,14 @@
+import React, { useState, useEffect } from "react";
+import api from "../../utils/api";
 import Header from "../Header/Header";
-import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { useEffect, useState } from "react";
+import { Switch, Route } from "react-router-dom/cjs/react-router-dom";
+import Main from "../Main/Main";
+import Profile from "../Profile/Profile";
+import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
 import { parseWeatherData, getForecastWeather } from "../../utils/weatherApi";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
-import { Switch, Route } from "react-router-dom/cjs/react-router-dom";
-import AddItemModal from "../AddItemModal/AddItemModal";
-import api from "../../utils/api";
-import Profile from "../Profile/Profile";
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -48,27 +47,15 @@ function App() {
       .addItem(values.name, values.imageUrl, values.weather)
       .then((response) => {
         if (response && response._id) {
-          // Handle successful response
           console.log("Item added successfully");
           handleCloseModal();
-          setCards([
-            ...cards,
-            {
-              _id: response._id, // Adjusted to match the response structure
-              name: values.name,
-              imageUrl: values.imageUrl,
-              weather: values.weather,
-            },
-          ]);
+          setCards([...cards, response]);
         } else {
-          // Handle unexpected response format
           console.error("Invalid response format:", response);
-          // Display an error message to the user
         }
       })
       .catch((error) => {
         console.error("Error adding item:", error);
-        // Handle error as needed
       });
   };
 
@@ -117,6 +104,7 @@ function App() {
               onCreateModal={handleCreateModal}
               cards={cards}
               onSelectCard={handleSelectedCard}
+              onAddItem={onAddItem}
             />
           </Route>
         </Switch>
