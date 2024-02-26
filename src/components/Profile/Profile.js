@@ -1,6 +1,6 @@
 import React from "react";
 import SideBar from "../SideBar/SideBar";
-import ClothesSection from "../ClothesSection/ClothesSection";
+import ItemCard from "../ItemCard/ItemCard"; // Import the ItemCard component
 import "./Profile.css";
 
 const Profile = ({ onCreateModal, cards, onSelectCard }) => {
@@ -9,7 +9,6 @@ const Profile = ({ onCreateModal, cards, onSelectCard }) => {
       <SideBar />
       <div className="profile__items">
         <h3 className="profile__items-your">Your Items</h3>
-
         <button
           className="profile_profile__button"
           type="text"
@@ -18,9 +17,8 @@ const Profile = ({ onCreateModal, cards, onSelectCard }) => {
           + Add New
         </button>
       </div>
-      {/* Render cards here */}
       {cards.map((card) => (
-        <ClothesSection
+        <ItemCard // Use ItemCard component instead of ClothesSection
           key={card._id}
           item={card}
           onSelectCard={onSelectCard}
