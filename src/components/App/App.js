@@ -117,7 +117,11 @@ function App() {
           />
         )}
         {activeModal === "preview" && (
-          <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
+          <ItemModal
+            selectedCard={selectedCard}
+            onClose={handleCloseModal}
+            onDelete={handleRemoveCard}
+          />
         )}
       </CurrentTemperatureUnitContext.Provider>
     </div>
