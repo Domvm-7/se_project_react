@@ -17,12 +17,9 @@ const Profile = ({ onCreateModal, cards, onSelectCard }) => {
           + Add New
         </button>
       </div>
+      {/* Render cards here */}
       {cards.map((card) => (
-        <ItemCard // Use ItemCard component instead of ClothesSection
-          key={card._id}
-          item={card}
-          onSelectCard={onSelectCard}
-        />
+        <ItemCard key={card._id} item={card} onSelectCard={onSelectCard} />
       ))}
     </div>
   );
