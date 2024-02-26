@@ -1,14 +1,19 @@
 import React from "react";
+
 import SideBar from "../SideBar/SideBar";
-import ItemCard from "../ItemCard/ItemCard"; // Import the ItemCard component
+
+import ClothesSection from "../ClothesSection/ClothesSection";
+
 import "./Profile.css";
 
-const Profile = ({ onCreateModal, cards, onSelectCard }) => {
+const Profile = ({ onCreateModal, item, onSelectCard }) => {
   return (
     <div>
       <SideBar />
+
       <div className="profile__items">
         <h3 className="profile__items-your">Your Items</h3>
+
         <button
           className="profile_profile__button"
           type="text"
@@ -17,10 +22,8 @@ const Profile = ({ onCreateModal, cards, onSelectCard }) => {
           + Add New
         </button>
       </div>
-      {/* Render cards here */}
-      {cards.map((card) => (
-        <ItemCard key={card._id} item={card} onSelectCard={onSelectCard} />
-      ))}
+
+      <ClothesSection item={item} onSelectCard={onSelectCard} />
     </div>
   );
 };
