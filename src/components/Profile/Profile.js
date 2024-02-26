@@ -3,7 +3,7 @@ import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
 import "./Profile.css";
 
-const Profile = ({ onCreateModal, item, onSelectCard }) => {
+const Profile = ({ onCreateModal, cards, onSelectCard }) => {
   return (
     <div>
       <SideBar />
@@ -18,7 +18,14 @@ const Profile = ({ onCreateModal, item, onSelectCard }) => {
           + Add New
         </button>
       </div>
-      <ClothesSection item={item} onSelectCard={onSelectCard} />
+      {/* Render cards here */}
+      {cards.map((card) => (
+        <ClothesSection
+          key={card._id}
+          item={card}
+          onSelectCard={onSelectCard}
+        />
+      ))}
     </div>
   );
 };

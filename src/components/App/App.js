@@ -113,7 +113,11 @@ function App() {
             />
           </Route>
           <Route path="/profile">
-            <Profile onCreateModal={handleCreateModal} />
+            <Profile
+              onCreateModal={handleCreateModal}
+              cards={cards}
+              onSelectCard={handleSelectedCard}
+            />
           </Route>
         </Switch>
         <Footer />
