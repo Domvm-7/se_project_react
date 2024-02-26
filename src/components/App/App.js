@@ -47,17 +47,21 @@ function App() {
     api
       .addItem(values.name, values.imageUrl, values.weather)
       .then((response) => {
-        console.log("Item added successfully");
-        handleCloseModal();
-        setCards([
-          ...cards,
-          {
-            id: response.data.id, // Assuming response.data.id contains the ID from the API
-            name: values.name,
-            imageUrl: values.imageUrl,
-            weather: values.weather,
-          },
-        ]);
+        if (response.data && response.data.id) {
+          console.log("Item added successfully");
+          handleCloseModal();
+          setCards([
+            ...cards,
+            {
+              _id: response.data.id,
+              name: values.name,
+              imageUrl: values.imageUrl,
+              weather: values.weather,
+            },
+          ]);
+        } else {
+          console.error("Error adding item: Invalid response format");
+        }
       })
       .catch((error) => {
         console.error("Error adding item:", error);
