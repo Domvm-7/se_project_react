@@ -47,14 +47,14 @@ function App() {
     api
       .addItem(values.name, values.imageUrl, values.weather)
       .then((response) => {
-        if (response && response.data && response.data.id) {
+        if (response && response._id) {
           // Handle successful response
           console.log("Item added successfully");
           handleCloseModal();
           setCards([
             ...cards,
             {
-              _id: response.data.id,
+              _id: response._id, // Adjusted to match the response structure
               name: values.name,
               imageUrl: values.imageUrl,
               weather: values.weather,
