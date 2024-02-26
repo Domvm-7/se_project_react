@@ -106,7 +106,9 @@ function App() {
             />
           </Route>
         </Switch>
-        <Route path="/profile" component={Profile}></Route>
+        <Route path="/profile" component={Profile}>
+          <Profile onCreateModal={handleCreateModal} />
+        </Route>
         <Footer />
         {activeModal === "create" && (
           <AddItemModal
