@@ -1,3 +1,30 @@
+My name is Dominic im currently working on project 11
+
+Step 1. Create the markup
+Step 2. Create a currentTemperatureUnit state in the root component
+Step 3. Create a context object
+Step 4. Extract a new value from the weather API
+Step 5. Use context in ToggleSwitch
+Step 6. Use context in WeatherCard
+Step 7. Use context in Main
+
+Add a /profile route
+Step 1. Create a new Profile component
+Step 2. Install React Router
+Step 3. Configure routes
+Step 4. Add navigation links to Header
+
+Complete the form for adding a clothing item
+Step 1. Create the AddItemModal component
+Step 2. Save an item
+
+Add functionality to delete cards
+Step 1. Add a delete button
+
+Set up a mock server
+
+Make API calls
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -75,28 +102,3 @@ A temperature unit toggle switch using React context
 A profile page route using React Router
 Form submission using controlled components or refs
 You'll also set up a mock server and write some code to make API calls to it. This mock server will mimic the behavior of the backend that you'll start building in Sprint 12.
-
-Step 1. Create the markup
-Step 2. Create a currentTemperatureUnit state in the root component
-Step 3. Create a context object
-Step 4. Extract a new value from the weather API
-Step 5. Use context in ToggleSwitch
-Step 6. Use context in WeatherCard
-Step 7. Use context in Main
-
-Add a /profile route
-Step 1. Create a new Profile component
-Step 2. Install React Router
-Step 3. Configure routes
-Step 4. Add navigation links to Header
-
-Complete the form for adding a clothing item
-Step 1. Create the AddItemModal component
-Step 2. Save an item
-
-Add functionality to delete cards
-Step 1. Add a delete button
-
-Set up a mock server
-
-Make API calls
