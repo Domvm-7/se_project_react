@@ -24,7 +24,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddItem({ name, link });
+    onAddItem({ name, imageUrl: link, weather }); // Pass weather attribute
   };
 
   // Reset state values when modal is opened
