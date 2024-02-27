@@ -5,7 +5,7 @@ import "./Profile.css";
 
 const Profile = ({ onCreateModal, cards, onSelectCard, onAddItem }) => {
   return (
-    <div>
+    <div className="profile__content">
       <SideBar />
       <div className="profile__items">
         <h3 className="profile__items-your">Your Items</h3>
