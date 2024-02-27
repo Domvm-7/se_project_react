@@ -27,3 +27,7 @@
   left: 765px;
   bottom: 50px;
 }
+
+.modal__delete-button:hover {
+  cursor: pointer;
+}
