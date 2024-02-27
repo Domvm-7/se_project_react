@@ -19,7 +19,9 @@ const ItemModal = ({ selectedCard, onClose, onDelete }) => {
         {/* Use imageUrl instead of link */}
         <div>{selectedCard.name}</div>
         <div> Weather type: {selectedCard.weather}</div>
-        <button onClick={handleDelete}>Delete</button>
+        <button className="modal__delete-button" onClick={handleDelete}>
+          Delete item
+        </button>
       </div>
     </div>
   );

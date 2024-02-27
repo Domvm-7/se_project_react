@@ -1,10 +1,14 @@
 .clothes-section {
+  position: absolute;
   display: flex;
-  flex-wrap: wrap;
   gap: 20px;
   justify-content: space-between;
   margin-top: 20px;
   padding: 0 20px;
   font-weight: bold;
   font-size: 20px;
+  width: 1015px;
+  height: 676px;
+  left: 365px;
+  top: 116px;
 }
