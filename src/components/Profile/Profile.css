@@ -3,6 +3,8 @@
   position: absolute;
   top: 119px;
   left: 385px;
+  height: 25px;
+  align-items: center;
 }
 
 .profile__items-your {
