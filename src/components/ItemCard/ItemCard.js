@@ -1,13 +1,13 @@
-import "./ItemCard.css";
 import React from "react";
+import "./ItemCard.css";
 
 const ItemCard = ({ item, onSelectCard }) => {
   return (
     <div>
       <div>
-        <div className="card__name"> {item.name}</div>
+        <div className="card__name">{item.name}</div>
         <img
-          src={item.link}
+          src={item.imageUrl} // Use imageUrl instead of link
           className="card__image"
           onClick={() => onSelectCard(item)}
           alt={item.name}
