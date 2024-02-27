@@ -1,0 +1,10 @@
+.clothes-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 0 20px;
+  font-weight: bold;
+  font-size: 20px;
+}
