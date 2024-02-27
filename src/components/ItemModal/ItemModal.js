@@ -1,3 +1,4 @@
+import React from "react";
 import "./ItemModal.css";
 
 const ItemModal = ({ selectedCard, onClose, onDelete }) => {
@@ -14,7 +15,8 @@ const ItemModal = ({ selectedCard, onClose, onDelete }) => {
           type="button"
           onClick={onClose}
         ></button>
-        <img src={selectedCard.link} alt={selectedCard.name} />
+        <img src={selectedCard.imageUrl} alt={selectedCard.name} />{" "}
+        {/* Use imageUrl instead of link */}
         <div>{selectedCard.name}</div>
         <div> Weather type: {selectedCard.weather}</div>
         <button onClick={handleDelete}>Delete</button>
