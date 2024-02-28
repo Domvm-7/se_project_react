@@ -21,13 +21,16 @@
 }
 
 .modal__delete-button {
+  position: relative;
   color: red;
   border: none;
-  position: absolute;
-  left: 765px;
-  bottom: 50px;
 }
 
 .modal__delete-button:hover {
   cursor: pointer;
+}
+
+.modal__item-card-content {
+  display: flex;
+  justify-content: space-between;
 }
