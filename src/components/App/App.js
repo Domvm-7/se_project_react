@@ -1,14 +1,19 @@
+// App.jsx
 import React, { useState, useEffect } from "react";
 import api from "../../utils/api";
+import authApi from "../../utils/auth";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import { Switch, Route, BrowserRouter } from "react-router-dom";
+import { Switch, Route, BrowserRouter, Redirect } from "react-router-dom";
 import Main from "../Main/Main";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
 import { parseWeatherData, getForecastWeather } from "../../utils/weatherApi";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
+import RegisterModal from "../RegisterModal/RegisterModal";
+import LoginModal from "../LoginModal/LoginModal";
+import { signIn, signUp } from "../../utils/auth";
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -16,6 +21,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -63,6 +69,57 @@ function App() {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
 
+  const handleRegister = (formData) => {
+    authApi
+      .signup(formData.name, formData.email, formData.password, formData.avatar)
+      .then((res) => {
+        if (res.token) {
+          localStorage.setItem("jwt", res.token);
+          setIsLoggedIn(true);
+          handleCloseModal();
+        }
+      })
+      .catch((error) => {
+        console.error("Error registering:", error);
+      });
+  };
+
+  const handleLogin = (formData) => {
+    authApi
+      .signin(formData.email, formData.password)
+      .then((res) => {
+        if (res.token) {
+          localStorage.setItem("jwt", res.token);
+          setIsLoggedIn(true);
+          handleCloseModal();
+        }
+      })
+      .catch((error) => {
+        console.error("Error logging in:", error);
+      });
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    if (token) {
+      authApi
+        .getUserData(token)
+        .then((res) => {
+          if (res) {
+            setIsLoggedIn(true);
+          } else {
+            setIsLoggedIn(false);
+          }
+        })
+        .catch((error) => {
+          console.error("Error checking user authentication:", error);
+          setIsLoggedIn(false);
+        });
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, []);
+
   useEffect(() => {
     api
       .getItems()
@@ -101,12 +158,18 @@ function App() {
               />
             </Route>
             <Route path="/profile">
-              <Profile
-                onCreateModal={handleCreateModal}
-                cards={cards}
-                onSelectCard={handleSelectedCard}
-                onAddItem={onAddItem}
-              />
+              {isLoggedIn ? (
+                <authApi>
+                  <Profile
+                    onCreateModal={handleCreateModal}
+                    cards={cards}
+                    onSelectCard={handleSelectedCard}
+                    onAddItem={onAddItem}
+                  />
+                </authApi>
+              ) : (
+                <Redirect to="/" />
+              )}
             </Route>
           </Switch>
           <Footer />
@@ -124,6 +187,16 @@ function App() {
               onDelete={handleRemoveCard}
             />
           )}
+          <RegisterModal
+            isOpen={activeModal === "register"}
+            onClose={handleCloseModal}
+            onRegister={handleRegister}
+          />
+          <LoginModal
+            isOpen={activeModal === "login"}
+            onClose={handleCloseModal}
+            onLogin={handleLogin}
+          />
         </CurrentTemperatureUnitContext.Provider>
       </div>
     </BrowserRouter>

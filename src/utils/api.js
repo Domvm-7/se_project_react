@@ -4,8 +4,12 @@ const baseUrl = "http://localhost:3001";
 
 const api = {
   baseUrl: baseUrl,
-  getItems: () => {
-    return fetch(`${baseUrl}/items`)
+  getItems: (token) => {
+    return fetch(`${baseUrl}/items`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then(processServerResponse)
       .catch((error) => {
         console.error("Error fetching items:", error);
