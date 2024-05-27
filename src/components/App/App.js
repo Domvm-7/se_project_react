@@ -70,8 +70,7 @@ function App() {
   };
 
   const handleRegister = (formData) => {
-    authApi
-      .signup(formData.name, formData.email, formData.password, formData.avatar)
+    signUp(formData.name, formData.email, formData.password, formData.avatar)
       .then((res) => {
         if (res.token) {
           localStorage.setItem("jwt", res.token);
@@ -85,8 +84,7 @@ function App() {
   };
 
   const handleLogin = (formData) => {
-    authApi
-      .signin(formData.email, formData.password)
+    signIn(formData.email, formData.password)
       .then((res) => {
         if (res.token) {
           localStorage.setItem("jwt", res.token);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const RegisterModal = ({ isOpen, handleCloseModal, onRegister }) => {
@@ -17,6 +17,12 @@ const RegisterModal = ({ isOpen, handleCloseModal, onRegister }) => {
     e.preventDefault();
     onRegister(formData);
   };
+
+  useEffect(() => {
+    if (isOpen) {
+      setFormData("");
+    }
+  }, [isOpen]);
 
   return (
     <ModalWithForm

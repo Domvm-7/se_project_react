@@ -29,15 +29,17 @@ const LoginModal = ({ isOpen, handleCloseModal, onLogin }) => {
       isOpen={isOpen}
       onSubmit={handleSubmit}
     >
-      <label className="modal__label">Login</label>
-      <input
-        className="modal__input"
-        type="text"
-        name="email"
-        placeholder="Email"
-        value={formData.email}
-        onChange={handleChange}
-      />
+      <label className="modal__label">
+        Login
+        <input
+          className="modal__input"
+          type="text"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+        />
+      </label>
       <input
         className="modal__input"
         type="text"
