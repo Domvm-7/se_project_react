@@ -1,30 +1,41 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./ItemModal.css";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 const ItemModal = ({ selectedCard, onClose, onDelete }) => {
+  const currentUser = useContext(CurrentUserContext);
+  const isOwn = selectedCard.owner === currentUser?._id;
+  const itemDeleteButtonClassName = `modal__delete-button ${
+    isOwn ? "modal__delete-button_visible" : "modal__delete-button_hidden"
+  }`;
+
   const handleDelete = () => {
     onDelete(selectedCard);
     onClose();
   };
 
   return (
-    <div className={`modal`}>
+    <div className="modal">
       <div className="modal__content-item">
         <button
           className="modal__close-item"
           type="button"
           onClick={onClose}
         ></button>
-        <img src={selectedCard.imageUrl} alt={selectedCard.name} />{" "}
-        {/* Use imageUrl instead of link */}
+        <img src={selectedCard.imageUrl} alt={selectedCard.name} />
         <div className="modal__item-card-content">
           <div>
             <div>{selectedCard.name}</div>
             <div> Weather type: {selectedCard.weather}</div>
           </div>
-          <button className="modal__delete-button" onClick={handleDelete}>
-            Delete item
-          </button>
+          {isOwn && (
+            <button
+              className={itemDeleteButtonClassName}
+              onClick={handleDelete}
+            >
+              Delete item
+            </button>
+          )}
         </div>
       </div>
     </div>
