@@ -1,23 +1,51 @@
-import React from "react";
+// Profile.js //
+import React, { useState, useContext } from "react";
 import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./Profile.css";
 
 const Profile = ({ onCreateModal, cards, onSelectCard, onAddItem }) => {
+  const currentUser = useContext(CurrentUserContext);
+  const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
+
+  const handleEditProfile = () => {
+    setIsEditProfileModalOpen(true);
+  };
+
+  const handleCloseEditProfileModal = () => {
+    setIsEditProfileModalOpen(false);
+  };
+
   return (
     <div className="profile__content">
       <SideBar />
       <div className="profile__items">
         <h3 className="profile__items-your">Your Items</h3>
         <button
-          className="profile_profile__button"
-          type="text"
+          className="profile__button"
+          type="button"
           onClick={onCreateModal}
         >
           + Add New
         </button>
+        <button
+          className="profile__edit-button"
+          type="button"
+          onClick={handleEditProfile}
+        >
+          Edit Profile
+        </button>
       </div>
-      <ClothesSection items={cards} onSelectCard={onSelectCard} />
+      <ClothesSection
+        items={cards.filter((card) => card.owner === currentUser._id)}
+        onSelectCard={onSelectCard}
+      />
+      <EditProfileModal
+        isOpen={isEditProfileModalOpen}
+        onClose={handleCloseEditProfileModal}
+      />
     </div>
   );
 };

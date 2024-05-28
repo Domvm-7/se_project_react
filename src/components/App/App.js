@@ -8,6 +8,7 @@ import { Switch, Route, BrowserRouter, Redirect } from "react-router-dom";
 import Main from "../Main/Main";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import ItemModal from "../ItemModal/ItemModal";
 import { parseWeatherData, getForecastWeather } from "../../utils/weatherApi";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
@@ -24,6 +25,7 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
+  const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -147,10 +149,18 @@ function App() {
       });
   }, []);
 
+  const openEditProfileModal = () => {
+    setIsEditProfileModalOpen(true);
+  };
+
+  const closeEditProfileModal = () => {
+    setIsEditProfileModalOpen(false);
+  };
+
   return (
     <BrowserRouter>
-      <div>
-        <CurrentUserContext.Provider value={currentUser}>
+      <CurrentUserContext.Provider value={currentUser}>
+        <div>
           <CurrentTemperatureUnitContext.Provider
             value={{ currentTemperatureUnit, handleToggleSwitchChange }}
           >
@@ -171,6 +181,7 @@ function App() {
                     cards={cards}
                     onSelectCard={handleSelectedCard}
                     onAddItem={onAddItem}
+                    onEditProfile={openEditProfileModal} // Pass the function to open the edit profile modal
                   />
                 ) : (
                   <Redirect to="/" />
@@ -202,9 +213,13 @@ function App() {
               onClose={handleCloseModal}
               onLogin={handleLogin}
             />
+            <EditProfileModal
+              isOpen={isEditProfileModalOpen}
+              onClose={closeEditProfileModal}
+            />
           </CurrentTemperatureUnitContext.Provider>
-        </CurrentUserContext.Provider>
-      </div>
+        </div>
+      </CurrentUserContext.Provider>
     </BrowserRouter>
   );
 }

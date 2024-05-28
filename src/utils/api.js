@@ -1,9 +1,11 @@
+// Api.js //
 import { processServerResponse } from "./utils";
 
 const baseUrl = "http://localhost:3001";
 
 const api = {
   baseUrl: baseUrl,
+
   getItems: (token) => {
     return fetch(`${baseUrl}/items`, {
       headers: {
@@ -34,6 +36,7 @@ const api = {
         console.error("Error adding item:", error);
       });
   },
+
   deleteItem: (id) => {
     return fetch(`${baseUrl}/items/${id}`, {
       method: "DELETE",
@@ -46,6 +49,28 @@ const api = {
       })
       .catch((error) => {
         console.error("Error deleting item:", error);
+      });
+  },
+
+  updateUserProfile: ({ name, avatar }) => {
+    const token = localStorage.getItem("jwt");
+    return fetch(`${baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ name, avatar }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Error: ${res.status}`);
+      })
+      .then((data) => {
+        // Update the context with the new user data if needed
+        return data;
       });
   },
 };
