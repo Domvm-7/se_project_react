@@ -10,7 +10,11 @@ const ModalWithForm = ({
   onSubmit,
 }) => {
   return (
-    <div className={`modal modal__type_${name} ${isOpen ? "modal_open" : ""}`}>
+    <div
+      className={`modal modal__type_${name} ${
+        isOpen ? "modal__open" : "modal__close"
+      }`}
+    >
       <div className="modal__content">
         <button
           className="modal__close-button"
