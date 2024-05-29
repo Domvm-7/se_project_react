@@ -1,3 +1,4 @@
+// Header.js //
 import React, { useContext } from "react";
 import "./Header.css";
 import logo from "../../images/logo.svg";

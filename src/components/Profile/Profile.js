@@ -6,7 +6,13 @@ import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./Profile.css";
 
-const Profile = ({ onCreateModal, cards, onSelectCard, onAddItem }) => {
+const Profile = ({
+  onCreateModal,
+  cards,
+  onSelectCard,
+  onAddItem,
+  onSignOut,
+}) => {
   const currentUser = useContext(CurrentUserContext);
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
 
@@ -36,6 +42,13 @@ const Profile = ({ onCreateModal, cards, onSelectCard, onAddItem }) => {
           onClick={handleEditProfile}
         >
           Edit Profile
+        </button>
+        <button
+          className="profile__signout-button"
+          type="button"
+          onClick={onSignOut}
+        >
+          Sign Out
         </button>
       </div>
       <ClothesSection

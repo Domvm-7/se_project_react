@@ -1,5 +1,4 @@
 // App.js
-
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import api from "../../utils/api";
@@ -102,6 +101,12 @@ function App() {
       .catch((error) => {
         console.error("Error logging in:", error);
       });
+  };
+
+  const handleSignOut = () => {
+    localStorage.removeItem("jwt");
+    setIsLoggedIn(false);
+    setCurrentUser(null);
   };
 
   useEffect(() => {
@@ -208,6 +213,7 @@ function App() {
                     onAddItem={onAddItem}
                     onEditProfile={openEditProfileModal}
                     onCardLike={handleCardLike}
+                    onSignOut={handleSignOut}
                   />
                 ) : (
                   <Redirect to="/" />
