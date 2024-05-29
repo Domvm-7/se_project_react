@@ -1,10 +1,11 @@
-// App.js //
+// App.js
+
 import React, { useState, useEffect } from "react";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import api from "../../utils/api";
 import authApi from "../../utils/auth";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import { Switch, Route, BrowserRouter, Redirect } from "react-router-dom";
 import Main from "../Main/Main";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
@@ -157,6 +158,29 @@ function App() {
     setIsEditProfileModalOpen(false);
   };
 
+  const handleCardLike = ({ id, isLiked }) => {
+    const token = localStorage.getItem("jwt");
+    if (!isLiked) {
+      api
+        .addCardLike(id, token)
+        .then((updatedCard) => {
+          setCards((cards) =>
+            cards.map((item) => (item._id === id ? updatedCard : item))
+          );
+        })
+        .catch((err) => console.log(err));
+    } else {
+      api
+        .removeCardLike(id, token)
+        .then((updatedCard) => {
+          setCards((cards) =>
+            cards.map((item) => (item._id === id ? updatedCard : item))
+          );
+        })
+        .catch((err) => console.log(err));
+    }
+  };
+
   return (
     <BrowserRouter>
       <CurrentUserContext.Provider value={currentUser}>
@@ -172,6 +196,7 @@ function App() {
                   onSelectCard={handleSelectedCard}
                   cards={cards}
                   onRemoveCard={handleRemoveCard}
+                  onCardLike={handleCardLike}
                 />
               </Route>
               <Route path="/profile">
@@ -181,7 +206,8 @@ function App() {
                     cards={cards}
                     onSelectCard={handleSelectedCard}
                     onAddItem={onAddItem}
-                    onEditProfile={openEditProfileModal} // Pass the function to open the edit profile modal
+                    onEditProfile={openEditProfileModal}
+                    onCardLike={handleCardLike}
                   />
                 ) : (
                   <Redirect to="/" />

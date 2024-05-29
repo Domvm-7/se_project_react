@@ -1,10 +1,11 @@
+// Main.js
 import React, { useMemo, useContext } from "react";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 import "./Main.css";
 
-function Main({ weatherTemp, onSelectCard, cards }) {
+function Main({ weatherTemp, onSelectCard, cards, onCardLike }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const temp = weatherTemp?.temperature?.[currentTemperatureUnit];
   const weatherType = useMemo(() => {
@@ -32,7 +33,12 @@ function Main({ weatherTemp, onSelectCard, cards }) {
         Today is {temp} / You may want to wear:
         <div className="card__items">
           {filteredCards.map((item) => (
-            <ItemCard key={item._id} item={item} onSelectCard={onSelectCard} />
+            <ItemCard
+              key={item._id}
+              item={item}
+              onSelectCard={onSelectCard}
+              onCardLike={onCardLike}
+            />
           ))}
         </div>
       </section>
