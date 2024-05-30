@@ -1,4 +1,7 @@
-My name is Dominic im currently working on project 11
+My name is Dominic im currently working on project 14
+
+Here is my link to my repo
+https://github.com/Domvm-7/se_project_react
 
 Step 1. Create the markup
 Step 2. Create a currentTemperatureUnit state in the root component
