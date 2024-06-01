@@ -1,8 +1,8 @@
-// App.js
+// App.js //
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import api from "../../utils/api";
-import authApi from "../../utils/auth";
+import authApi, { getUserData, signIn, signUp } from "../../utils/auth";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Main from "../Main/Main";
@@ -14,7 +14,6 @@ import { parseWeatherData, getForecastWeather } from "../../utils/weatherApi";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
-import { signIn, signUp } from "../../utils/auth";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function App() {
@@ -112,8 +111,7 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem("jwt");
     if (token) {
-      authApi
-        .getUserData(token)
+      getUserData(token)
         .then((res) => {
           if (res) {
             setIsLoggedIn(true);
