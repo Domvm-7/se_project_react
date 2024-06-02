@@ -1,7 +1,12 @@
 My name is Dominic im currently working on project 14
 
 Here is my link to my repo
+
+Frontend
 https://github.com/Domvm-7/se_project_react
+
+Backend
+https://github.com/Domvm-7/se_project_express
 
 Step 1. Create the markup
 Step 2. Create a currentTemperatureUnit state in the root component
