@@ -23,7 +23,11 @@ const Header = ({ onCreateModal }) => {
       </div>
       <div className="header__avatar-logo">
         <ToggleSwitch />
-        <button className="header__button" type="text" onClick={onCreateModal}>
+        <button
+          className="header__button"
+          type="text"
+          onClick={() => onCreateModal("create")}
+        >
           + Add Clothes
         </button>
         {currentUser ? (

@@ -26,8 +26,8 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
 
-  const handleCreateModal = () => {
-    setActiveModal("create");
+  const handleCreateModal = (modalType) => {
+    setActiveModal(modalType);
   };
 
   const handleCloseModal = () => {

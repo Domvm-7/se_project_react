@@ -18,7 +18,7 @@ const LoginModal = ({ isOpen, handleCloseModal, onLogin }) => {
 
   useEffect(() => {
     if (isOpen) {
-      setFormData("");
+      setFormData({ email: "", password: "" });
     }
   }, [isOpen]);
 
@@ -42,7 +42,7 @@ const LoginModal = ({ isOpen, handleCloseModal, onLogin }) => {
       </label>
       <input
         className="modal__input"
-        type="text"
+        type="password"
         name="password"
         placeholder="Password"
         value={formData.password}
