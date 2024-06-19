@@ -12,6 +12,7 @@ const Profile = ({
   onSelectCard,
   onAddItem,
   onSignOut,
+  isLoggedIn, // Added isLoggedIn prop
 }) => {
   const currentUser = useContext(CurrentUserContext);
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
@@ -29,13 +30,15 @@ const Profile = ({
       <SideBar />
       <div className="profile__items">
         <h3 className="profile__items-your">Your Items</h3>
-        <button
-          className="profile__button"
-          type="button"
-          onClick={onCreateModal}
-        >
-          + Add New
-        </button>
+        {isLoggedIn && (
+          <button
+            className="profile__button"
+            type="button"
+            onClick={onCreateModal}
+          >
+            + Add New
+          </button>
+        )}
         <button
           className="profile__edit-button"
           type="button"

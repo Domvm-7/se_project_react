@@ -45,6 +45,9 @@ export const signUp = (name, email, password, avatar) => {
       }
       return response.json();
     })
+    .then((data) => {
+      return data; // Ensure you return the data received from the server
+    })
     .catch((error) => {
       console.error("Error signing up:", error);
       throw error; // Propagate the error to the caller

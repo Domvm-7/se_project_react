@@ -15,7 +15,7 @@ const RegisterModal = ({ isOpen, onClose, onRegister }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onRegister(formData);
+    onRegister(formData); // Call onRegister with formData
   };
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const RegisterModal = ({ isOpen, onClose, onRegister }) => {
       buttonText="Register"
       onClose={onClose}
       isOpen={isOpen}
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmit} // Pass handleSubmit to onSubmit
       name="register"
       title="Register"
     >

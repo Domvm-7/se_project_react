@@ -79,7 +79,7 @@ function App() {
           localStorage.setItem("jwt", res.token);
           setIsLoggedIn(true);
           setCurrentUser(res.user);
-          handleCloseModal();
+          handleCloseModal(); // Close the modal upon successful registration
         }
       })
       .catch((error) => {
@@ -94,7 +94,7 @@ function App() {
           localStorage.setItem("jwt", res.token);
           setIsLoggedIn(true);
           setCurrentUser(res.user);
-          handleCloseModal();
+          handleCloseModal(); // Close the modal upon successful login
         }
       })
       .catch((error) => {
@@ -212,6 +212,7 @@ function App() {
                     onEditProfile={openEditProfileModal}
                     onCardLike={handleCardLike}
                     onSignOut={handleSignOut}
+                    isLoggedIn={isLoggedIn}
                   />
                 ) : (
                   <Redirect to="/" />
