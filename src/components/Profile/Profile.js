@@ -12,7 +12,7 @@ const Profile = ({
   onSelectCard,
   onAddItem,
   onSignOut,
-  isLoggedIn, // Added isLoggedIn prop
+  isLoggedIn,
 }) => {
   const currentUser = useContext(CurrentUserContext);
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
@@ -34,9 +34,9 @@ const Profile = ({
           <button
             className="profile__button"
             type="button"
-            onClick={onCreateModal}
+            onClick={() => onCreateModal("new")}
           >
-            + Add New
+            + Add Clothes
           </button>
         )}
         <button

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { signUp } from "../../utils/auth"; // Import the signUp function
 
 const RegisterModal = ({ isOpen, onClose, onRegister }) => {
   const [formData, setFormData] = useState({
@@ -15,7 +16,7 @@ const RegisterModal = ({ isOpen, onClose, onRegister }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onRegister(formData); // Call onRegister with formData
+    onRegister(formData);
   };
 
   useEffect(() => {
@@ -34,7 +35,7 @@ const RegisterModal = ({ isOpen, onClose, onRegister }) => {
       buttonText="Register"
       onClose={onClose}
       isOpen={isOpen}
-      onSubmit={handleSubmit} // Pass handleSubmit to onSubmit
+      onSubmit={handleSubmit}
       name="register"
       title="Register"
     >
