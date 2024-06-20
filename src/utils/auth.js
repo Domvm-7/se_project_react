@@ -32,7 +32,7 @@ export const getUserData = (token) => {
 };
 
 export const signUp = (name, email, password, avatar) => {
-  return fetch(`${baseUrl}/auth/local/signup`, {
+  return fetch(`${baseUrl}/signUp`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
