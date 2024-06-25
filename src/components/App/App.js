@@ -79,7 +79,7 @@ function App() {
           localStorage.setItem("jwt", res.token);
           setIsLoggedIn(true);
           setCurrentUser(res.user);
-          handleCloseModal(); // Close the modal upon successful registration
+          handleCloseModal();
         }
       })
       .catch((error) => {
@@ -94,7 +94,7 @@ function App() {
           localStorage.setItem("jwt", res.token);
           setIsLoggedIn(true);
           setCurrentUser(res.user);
-          handleCloseModal(); // Close the modal upon successful login
+          handleCloseModal();
         }
       })
       .catch((error) => {

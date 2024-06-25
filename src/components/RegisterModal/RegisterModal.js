@@ -22,6 +22,7 @@ const RegisterModal = ({ isOpen, onClose, onRegister }) => {
       .then((data) => {
         // Call the onRegister callback with the registration data
         onRegister(data);
+        onClose();
       })
       .catch((err) => {
         setError("Registration failed: " + err.message);
