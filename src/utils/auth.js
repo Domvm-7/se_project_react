@@ -55,7 +55,7 @@ export const signUp = (name, email, password, avatar) => {
 };
 
 export const signIn = (email, password) => {
-  return fetch(`${baseUrl}/signin`, {
+  return fetch(`${baseUrl}/signIn`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -64,7 +64,7 @@ export const signIn = (email, password) => {
   })
     .then((response) => {
       if (!response.ok) {
-        throw new Error("Signin failed");
+        throw new Error("SignIn failed");
       }
       return response.json();
     })
