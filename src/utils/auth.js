@@ -41,7 +41,7 @@ export const signUp = (name, email, password, avatar) => {
   })
     .then((response) => {
       if (!response.ok) {
-        throw new Error("Signup failed");
+        throw new Error("SignUp failed");
       }
       return response.json();
     })
