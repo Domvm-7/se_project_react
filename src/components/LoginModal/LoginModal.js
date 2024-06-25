@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { signIn } from "../../utils/auth";
 
 const LoginModal = ({ isOpen, onClose, onLogin }) => {
   const [formData, setFormData] = useState({
@@ -16,8 +15,8 @@ const LoginModal = ({ isOpen, onClose, onLogin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const data = await signIn(formData.email, formData.password);
-      onLogin(data); // Call the onLogin prop with the user data
+      // const data = await signIn(formData.email, formData.password);
+      await onLogin(formData); // Call the onLogin prop with the user data
       onClose(); // Close the modal on successful login
     } catch (err) {
       setError(err.message); // Set the error message
