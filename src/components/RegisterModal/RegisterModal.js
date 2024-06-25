@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { signUp } from "../../utils/auth"; // Import the signUp function
+import { signUp } from "../../utils/auth";
 
 const RegisterModal = ({ isOpen, onClose, onRegister }) => {
   const [formData, setFormData] = useState({
@@ -9,6 +9,7 @@ const RegisterModal = ({ isOpen, onClose, onRegister }) => {
     password: "",
     avatar: "",
   });
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -16,7 +17,15 @@ const RegisterModal = ({ isOpen, onClose, onRegister }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onRegister(formData);
+    setError(null);
+    signUp(formData.name, formData.email, formData.password, formData.avatar)
+      .then((data) => {
+        // Call the onRegister callback with the registration data
+        onRegister(data);
+      })
+      .catch((err) => {
+        setError("Registration failed: " + err.message);
+      });
   };
 
   useEffect(() => {
@@ -27,6 +36,7 @@ const RegisterModal = ({ isOpen, onClose, onRegister }) => {
         password: "",
         avatar: "",
       });
+      setError(null); // Clear any existing errors when modal opens
     }
   }, [isOpen]);
 
@@ -83,6 +93,7 @@ const RegisterModal = ({ isOpen, onClose, onRegister }) => {
           onChange={handleChange}
         />
       </label>
+      {error && <p className="modal__error">{error}</p>}
     </ModalWithForm>
   );
 };
