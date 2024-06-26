@@ -25,7 +25,7 @@ const Profile = ({
   const handleCloseEditProfileModal = () => {
     setIsEditProfileModalOpen(false);
   };
-
+  console.log({ isLoggedIn });
   return (
     <div className="profile__content">
       <SideBar />

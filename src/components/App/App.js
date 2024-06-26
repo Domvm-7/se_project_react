@@ -25,6 +25,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
+  const [isLoggedInLoading, setIsLoggedInLoading] = useState(true);
 
   const handleCreateModal = (modalType) => {
     setActiveModal(modalType);
@@ -129,6 +130,7 @@ function App() {
     } else {
       setIsLoggedIn(false);
       setCurrentUser(null);
+      setIsLoggedInLoading(false);
     }
   }, []);
 
@@ -183,7 +185,7 @@ function App() {
         .catch((err) => console.log(err));
     }
   };
-
+  console.log({ isLoggedIn });
   return (
     <BrowserRouter>
       <CurrentUserContext.Provider value={currentUser}>
