@@ -61,6 +61,12 @@ const Header = ({ onCreateModal }) => {
             >
               Register
             </button>
+            <button
+              className="header__button"
+              onClick={() => onCreateModal("signout")}
+            >
+              Sign Out
+            </button>
           </nav>
         )}
       </div>
