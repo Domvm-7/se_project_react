@@ -1,4 +1,4 @@
-// Profile.js //
+// Profile.js
 import React, { useState, useContext } from "react";
 import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
@@ -13,6 +13,7 @@ const Profile = ({
   onAddItem,
   onSignOut,
   isLoggedIn,
+  onCardLike,
 }) => {
   const currentUser = useContext(CurrentUserContext);
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
@@ -31,32 +32,35 @@ const Profile = ({
       <div className="profile__items">
         <h3 className="profile__items-your">Your Items</h3>
         {isLoggedIn && (
-          <button
-            className="profile__button"
-            type="button"
-            onClick={() => onCreateModal("new")}
-          >
-            + Add Clothes
-          </button>
+          <>
+            <button
+              className="profile__button"
+              type="button"
+              onClick={() => onCreateModal("create")}
+            >
+              + Add Clothes
+            </button>
+            <button
+              className="profile__edit-button"
+              type="button"
+              onClick={handleEditProfile}
+            >
+              Edit Profile
+            </button>
+            <button
+              className="profile__signout-button"
+              type="button"
+              onClick={onSignOut}
+            >
+              Sign Out
+            </button>
+          </>
         )}
-        <button
-          className="profile__edit-button"
-          type="button"
-          onClick={handleEditProfile}
-        >
-          Edit Profile
-        </button>
-        <button
-          className="profile__signout-button"
-          type="button"
-          onClick={onSignOut}
-        >
-          Sign Out
-        </button>
       </div>
       <ClothesSection
         items={cards.filter((card) => card.owner === currentUser._id)}
         onSelectCard={onSelectCard}
+        onCardLike={onCardLike}
       />
       <EditProfileModal
         isOpen={isEditProfileModalOpen}

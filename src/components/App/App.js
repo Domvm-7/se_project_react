@@ -212,7 +212,7 @@ function App() {
                     onEditProfile={openEditProfileModal}
                     onCardLike={handleCardLike}
                     onSignOut={handleSignOut}
-                    isLoggedIn={isLoggedIn}
+                    isLoggedIn={isLoggedIn} // Pass isLoggedIn as a prop here
                   />
                 ) : (
                   <Redirect to="/" />
