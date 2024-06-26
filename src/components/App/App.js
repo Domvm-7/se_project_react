@@ -126,6 +126,9 @@ function App() {
           console.error("Error checking user authentication:", error);
           setIsLoggedIn(false);
           setCurrentUser(null);
+        })
+        .finally(() => {
+          setIsLoggedInLoading(false);
         });
     } else {
       setIsLoggedIn(false);
@@ -185,7 +188,11 @@ function App() {
         .catch((err) => console.log(err));
     }
   };
-  console.log({ isLoggedIn });
+
+  if (isLoggedInLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <BrowserRouter>
       <CurrentUserContext.Provider value={currentUser}>
