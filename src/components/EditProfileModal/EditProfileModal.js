@@ -27,18 +27,20 @@ const EditProfileModal = ({ isOpen, onClose, onUpdateUserProfile }) => {
       buttonText="Save"
       name="edit-profile"
     >
-      <label>
+      <label className="modal__label">
         Name:
         <input
+          className="modal__input"
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
         />
       </label>
-      <label>
+      <label className="modal__label">
         Avatar URL:
         <input
+          className="modal__input"
           type="text"
           value={avatar}
           onChange={(e) => setAvatar(e.target.value)}
