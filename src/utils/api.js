@@ -11,11 +11,7 @@ const api = {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    })
-      .then(processServerResponse)
-      .catch((error) => {
-        console.error("Error fetching items:", error);
-      });
+    }).then(processServerResponse);
   },
 
   addItem: (name, imageUrl, weather) => {
@@ -25,31 +21,23 @@ const api = {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ name, imageUrl, weather }),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to add item");
-        }
-        return response.json();
-      })
-      .catch((error) => {
-        console.error("Error adding item:", error);
-      });
+    }).then((response) => {
+      if (!response.ok) {
+        throw new Error("Failed to add item");
+      }
+      return response.json();
+    });
   },
 
   deleteItem: (id) => {
     return fetch(`${baseUrl}/items/${id}`, {
       method: "DELETE",
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to delete item");
-        }
-        console.log("Item deleted successfully");
-      })
-      .catch((error) => {
-        console.error("Error deleting item:", error);
-      });
+    }).then((response) => {
+      if (!response.ok) {
+        throw new Error("Failed to delete item");
+      }
+      return response.json();
+    });
   },
 
   updateUserProfile: ({ name, avatar }) => {
@@ -61,17 +49,12 @@ const api = {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({ name, avatar }),
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Error: ${res.status}`);
-      })
-      .then((data) => {
-        // Update the context with the new user data if needed
-        return data;
-      });
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error: ${res.status}`);
+    });
   },
 };
 

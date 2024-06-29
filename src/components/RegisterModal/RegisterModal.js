@@ -1,6 +1,6 @@
+// RegisterModal.js //
 import React, { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { signUp } from "../../utils/auth";
 
 const RegisterModal = ({ isOpen, onClose, onRegister }) => {
   const [formData, setFormData] = useState({
@@ -9,6 +9,7 @@ const RegisterModal = ({ isOpen, onClose, onRegister }) => {
     password: "",
     avatar: "",
   });
+
   const [error, setError] = useState(null);
 
   const handleChange = (e) => {
@@ -18,15 +19,7 @@ const RegisterModal = ({ isOpen, onClose, onRegister }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setError(null);
-    signUp(formData.name, formData.email, formData.password, formData.avatar)
-      .then((data) => {
-        // Call the onRegister callback with the registration data
-        onRegister(data);
-        onClose();
-      })
-      .catch((err) => {
-        setError("Registration failed: " + err.message);
-      });
+    onRegister(formData);
   };
 
   useEffect(() => {
@@ -59,17 +52,19 @@ const RegisterModal = ({ isOpen, onClose, onRegister }) => {
           placeholder="Name"
           value={formData.name}
           onChange={handleChange}
+          required
         />
       </label>
       <label className="modal__label">
         Email
         <input
           className="modal__input"
-          type="text"
+          type="email"
           name="email"
           placeholder="Email"
           value={formData.email}
           onChange={handleChange}
+          required
         />
       </label>
       <label className="modal__label">
@@ -81,6 +76,7 @@ const RegisterModal = ({ isOpen, onClose, onRegister }) => {
           placeholder="Password"
           value={formData.password}
           onChange={handleChange}
+          required
         />
       </label>
       <label className="modal__label">
@@ -92,6 +88,7 @@ const RegisterModal = ({ isOpen, onClose, onRegister }) => {
           placeholder="Avatar URL"
           value={formData.avatar}
           onChange={handleChange}
+          required
         />
       </label>
       {error && <p className="modal__error">{error}</p>}

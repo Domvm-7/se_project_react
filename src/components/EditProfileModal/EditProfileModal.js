@@ -1,10 +1,9 @@
-// src/components/EditProfileModal/EditProfileModal.jsx
+// EditProfileModal.jsx //
 import React, { useContext, useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import api from "../../utils/api";
 
-const EditProfileModal = ({ isOpen, onClose }) => {
+const EditProfileModal = ({ isOpen, onClose, onUpdateUserProfile }) => {
   const currentUser = useContext(CurrentUserContext);
   const [name, setName] = useState(currentUser?.name || "");
   const [avatar, setAvatar] = useState(currentUser?.avatar || "");
@@ -16,16 +15,7 @@ const EditProfileModal = ({ isOpen, onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    api
-      .updateUserProfile({ name, avatar })
-      .then((updatedUser) => {
-        // Update the context or handle updated user data here
-        console.log("User profile updated:", updatedUser);
-        onClose();
-      })
-      .catch((error) => {
-        console.error("Error updating profile:", error);
-      });
+    onUpdateUserProfile({ name, avatar });
   };
 
   return (

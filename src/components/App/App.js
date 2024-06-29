@@ -1,4 +1,4 @@
-// App.js //
+// App.js
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import api from "../../utils/api";
@@ -77,10 +77,7 @@ function App() {
     signUp(formData.name, formData.email, formData.password, formData.avatar)
       .then((res) => {
         if (res.token) {
-          localStorage.setItem("jwt", res.token);
-          setIsLoggedIn(true);
-          setCurrentUser(res.user);
-          handleCloseModal();
+          handleLogin({ email: formData.email, password: formData.password });
         }
       })
       .catch((error) => {
@@ -94,8 +91,14 @@ function App() {
         if (res.token) {
           localStorage.setItem("jwt", res.token);
           setIsLoggedIn(true);
-          setCurrentUser(res.user);
-          handleCloseModal();
+          getUserData(res.token)
+            .then((userData) => {
+              setCurrentUser(userData);
+              handleCloseModal();
+            })
+            .catch((error) => {
+              console.error("Error fetching user data:", error);
+            });
         }
       })
       .catch((error) => {
@@ -107,6 +110,20 @@ function App() {
     localStorage.removeItem("jwt");
     setIsLoggedIn(false);
     setCurrentUser(null);
+  };
+
+  const handleUpdateUserProfile = ({ name, avatar }) => {
+    const token = localStorage.getItem("jwt");
+    api
+      .updateUserProfile({ name, avatar }, token)
+      .then((updatedUser) => {
+        setCurrentUser(updatedUser);
+        setIsEditProfileModalOpen(false);
+        console.log("User profile updated:", updatedUser);
+      })
+      .catch((error) => {
+        console.error("Error updating profile:", error);
+      });
   };
 
   useEffect(() => {
@@ -147,6 +164,7 @@ function App() {
       .catch((error) => {
         console.error("Error fetching items:", error);
       });
+
     getForecastWeather()
       .then((data) => {
         const temperature = parseWeatherData(data);
@@ -256,6 +274,7 @@ function App() {
             <EditProfileModal
               isOpen={isEditProfileModalOpen}
               onClose={closeEditProfileModal}
+              onUpdateUserProfile={handleUpdateUserProfile}
             />
           </CurrentTemperatureUnitContext.Provider>
         </div>
