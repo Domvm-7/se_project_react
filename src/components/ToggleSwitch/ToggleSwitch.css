@@ -20,6 +20,7 @@
   text-align: center;
   cursor: pointer;
   position: absolute;
+  transition: left 0.5s ease;
 }
 
 .switch__slider-F {
