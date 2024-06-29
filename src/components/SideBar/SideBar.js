@@ -8,11 +8,13 @@ const SideBar = ({ onEditProfile, onSignOut, isLoggedIn }) => {
 
   return (
     <div className="sidebar">
-      <img className="sidebar__avatar" src={avatar} alt="avatar" />
-      <h3 className="sidebar__name">
-        {currentUser.name || "Dominic Martinez"}
-      </h3>
-      <div className="sidebar__buttons">
+      <div className="sidebar__top">
+        <img className="sidebar__avatar" src={avatar} alt="avatar" />
+        <h3 className="sidebar__name">
+          {currentUser.name || "Dominic Martinez"}
+        </h3>
+      </div>
+      <div className="sidebar__bottom">
         {isLoggedIn && (
           <>
             <button
