@@ -51,15 +51,15 @@ const Header = ({ onCreateModal }) => {
           <nav className="header__nav">
             <button
               className="header__button"
-              onClick={() => onCreateModal("login")}
+              onClick={() => onCreateModal("register")}
             >
-              Log In
+              Sign Up
             </button>
             <button
               className="header__button"
-              onClick={() => onCreateModal("register")}
+              onClick={() => onCreateModal("login")}
             >
-              Register
+              Log In
             </button>
           </nav>
         )}

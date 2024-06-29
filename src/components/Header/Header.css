@@ -37,3 +37,9 @@
   font-weight: bold;
   text-decoration: none;
 }
+
+.header__avatar {
+  height: 56px;
+  width: 56px;
+  border-radius: 50%;
+}
