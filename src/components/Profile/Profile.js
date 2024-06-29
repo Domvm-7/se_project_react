@@ -25,36 +25,26 @@ const Profile = ({
   const handleCloseEditProfileModal = () => {
     setIsEditProfileModalOpen(false);
   };
+
   console.log({ isLoggedIn });
+
   return (
     <div className="profile__content">
-      <SideBar />
+      <SideBar
+        onEditProfile={handleEditProfile}
+        onSignOut={onSignOut}
+        isLoggedIn={isLoggedIn}
+      />
       <div className="profile__items">
         <h3 className="profile__items-your">Your Items</h3>
         {isLoggedIn && (
-          <>
-            <button
-              className="profile__button"
-              type="button"
-              onClick={() => onCreateModal("create")}
-            >
-              + Add Clothes
-            </button>
-            <button
-              className="profile__edit-button"
-              type="button"
-              onClick={handleEditProfile}
-            >
-              Edit Profile
-            </button>
-            <button
-              className="profile__signout-button"
-              type="button"
-              onClick={onSignOut}
-            >
-              Sign Out
-            </button>
-          </>
+          <button
+            className="profile__button"
+            type="button"
+            onClick={() => onCreateModal("create")}
+          >
+            + Add Clothes
+          </button>
         )}
       </div>
       <ClothesSection

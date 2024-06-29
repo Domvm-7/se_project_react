@@ -26,32 +26,6 @@
   opacity: 0.7;
 }
 
-.profile__edit-button {
-  background-color: transparent;
-  border: none;
-  font-weight: bold;
-  font-size: 20px;
-  opacity: 60%;
-}
-
-.profile__edit-button:hover {
-  cursor: pointer;
-  opacity: 0.7;
-}
-
-.profile__signout-button {
-  background-color: transparent;
-  border: none;
-  font-weight: bold;
-  font-size: 20px;
-  opacity: 60%;
-}
-
-.profile__signout-button:hover {
-  cursor: pointer;
-  opacity: 0.7;
-}
-
 .profile__content {
   display: flex;
 }
