@@ -76,7 +76,7 @@ function App() {
   const handleRegister = (formData) => {
     signUp(formData.name, formData.email, formData.password, formData.avatar)
       .then((res) => {
-        if (res.token) {
+        {
           handleLogin({ email: formData.email, password: formData.password });
         }
       })
