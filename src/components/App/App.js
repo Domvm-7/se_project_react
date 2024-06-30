@@ -1,7 +1,9 @@
 // App.js
+// App.js
+
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import api from "../../utils/api";
+import api from "../../utils/api"; // Import your api instance
 import authApi, { getUserData, signIn, signUp } from "../../utils/auth";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
@@ -76,9 +78,7 @@ function App() {
   const handleRegister = (formData) => {
     signUp(formData.name, formData.email, formData.password, formData.avatar)
       .then((res) => {
-        {
-          handleLogin({ email: formData.email, password: formData.password });
-        }
+        handleLogin({ email: formData.email, password: formData.password });
       })
       .catch((error) => {
         console.error("Error registering:", error);
@@ -242,6 +242,8 @@ function App() {
                     onCardLike={handleCardLike}
                     onSignOut={handleSignOut}
                     isLoggedIn={isLoggedIn} // Pass isLoggedIn as a prop here
+                    api={api} // Pass api instance to Profile component
+                    onUpdateUserProfile={handleUpdateUserProfile} // Pass update profile function
                   />
                 ) : (
                   <Redirect to="/" />

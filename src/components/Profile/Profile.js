@@ -1,4 +1,5 @@
 // Profile.js
+
 import React, { useState, useContext } from "react";
 import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
@@ -14,6 +15,8 @@ const Profile = ({
   onSignOut,
   isLoggedIn,
   onCardLike,
+  api, // Receive api instance
+  onUpdateUserProfile, // Receive update profile function
 }) => {
   const currentUser = useContext(CurrentUserContext);
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
@@ -25,8 +28,6 @@ const Profile = ({
   const handleCloseEditProfileModal = () => {
     setIsEditProfileModalOpen(false);
   };
-
-  console.log({ isLoggedIn });
 
   return (
     <div className="profile__content">
@@ -55,6 +56,7 @@ const Profile = ({
       <EditProfileModal
         isOpen={isEditProfileModalOpen}
         onClose={handleCloseEditProfileModal}
+        onUpdateUserProfile={onUpdateUserProfile} // Pass update profile function
       />
     </div>
   );
