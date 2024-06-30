@@ -85,7 +85,7 @@ function App() {
       });
   };
 
-  const handleLogin = (formData) => {
+  const handleLogin = (formData, onError) => {
     signIn(formData.email, formData.password)
       .then((res) => {
         if (res.token) {
@@ -98,11 +98,13 @@ function App() {
             })
             .catch((error) => {
               console.error("Error fetching user data:", error);
+              onError(error);
             });
         }
       })
       .catch((error) => {
         console.error("Error logging in:", error);
+        onError(error);
       });
   };
 

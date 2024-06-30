@@ -6,21 +6,22 @@ const LoginModal = ({ isOpen, onClose, onLogin }) => {
     email: "",
     password: "",
   });
+
   const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      // const data = await signIn(formData.email, formData.password);
-      await onLogin(formData); // Call the onLogin prop with the user data
-      onClose(); // Close the modal on successful login
-    } catch (err) {
-      setError(err.message); // Set the error message
-    }
+    onLogin(formData, (err) => {
+      if (err) {
+        setError(err.message);
+      } else {
+        onClose();
+      }
+    });
   };
 
   useEffect(() => {
