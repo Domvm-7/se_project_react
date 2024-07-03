@@ -15,10 +15,12 @@ const api = {
   },
 
   addItem: (name, imageUrl, weather) => {
+    const token = localStorage.getItem("jwt");
     return fetch(`${baseUrl}/items`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({ name, imageUrl, weather }),
     }).then((response) => {
@@ -30,8 +32,12 @@ const api = {
   },
 
   deleteItem: (id) => {
+    const token = localStorage.getItem("jwt");
     return fetch(`${baseUrl}/items/${id}`, {
       method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     }).then((response) => {
       if (!response.ok) {
         throw new Error("Failed to delete item");
