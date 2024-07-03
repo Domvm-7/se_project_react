@@ -2,6 +2,7 @@
   text-align: center;
   position: relative;
   top: 60px;
+  right: 15px;
 }
 
 .card__image {
@@ -9,4 +10,19 @@
   height: 328px;
   border-radius: 10px;
   margin-top: 20px;
+}
+
+.like-button {
+  background-image: url("/src/images/like-button.svg");
+  border: none;
+  width: 20px;
+  height: 18px;
+  position: relative;
+  bottom: 295px;
+  right: 130px;
+}
+
+.like-button:hover {
+  cursor: pointer;
+  opacity: 70%;
 }

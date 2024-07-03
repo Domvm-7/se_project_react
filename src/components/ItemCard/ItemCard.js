@@ -13,7 +13,7 @@ const ItemCard = ({ item, onSelectCard, onCardLike }) => {
     onCardLike({ id: item._id, isLiked });
   };
 
-  const itemLikeButtonClassName = `like-button ${isLiked ? "liked" : ""}`;
+  const itemLikeButton = `like-button ${isLiked ? "liked" : ""}`;
 
   return (
     <div>
@@ -28,7 +28,7 @@ const ItemCard = ({ item, onSelectCard, onCardLike }) => {
           />
         )}
         {currentUser && (
-          <button className={itemLikeButtonClassName} onClick={handleLike}>
+          <button className={itemLikeButton} onClick={handleLike}>
             {isLiked ? "Unlike" : "Like"}
           </button>
         )}
