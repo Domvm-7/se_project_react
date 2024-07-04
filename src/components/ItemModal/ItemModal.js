@@ -25,8 +25,11 @@ const ItemModal = ({ selectedCard, onClose, onDelete }) => {
         <img src={selectedCard.imageUrl} alt={selectedCard.name} />
         <div className="modal__item-card-content">
           <div>
-            <div>{selectedCard.name}</div>
-            <div> Weather type: {selectedCard.weather}</div>
+            <div className="modal__card-name">{selectedCard.name}</div>
+            <div className="modal__card-name">
+              {" "}
+              Weather type: {selectedCard.weather}
+            </div>
           </div>
           {isOwn && (
             <button
