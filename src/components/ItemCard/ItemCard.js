@@ -3,6 +3,8 @@
 import React, { useContext } from "react";
 import "./ItemCard.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import likeButtonImage from "../../images/like-button.svg";
+import likedButtonImage from "../../images/liked-button.svg";
 
 const ItemCard = ({ item, onSelectCard, onCardLike }) => {
   const currentUser = useContext(CurrentUserContext);
@@ -30,7 +32,10 @@ const ItemCard = ({ item, onSelectCard, onCardLike }) => {
         )}
         {currentUser && (
           <button className={itemLikeButton} onClick={handleLike}>
-            {isLiked ? "Unlike" : "Like"}
+            <img
+              src={isLiked ? likedButtonImage : likeButtonImage}
+              alt={isLiked ? "Liked" : "Like"}
+            />
           </button>
         )}
       </div>
