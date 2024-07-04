@@ -43,3 +43,8 @@
 .modal__card-name {
   padding-top: 5px;
 }
+
+.modal__image {
+  width: 496px;
+  height: 510px;
+}
