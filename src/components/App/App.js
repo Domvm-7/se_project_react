@@ -1,5 +1,4 @@
-// App.js
-// App.js
+// App.js //
 
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
@@ -116,15 +115,16 @@ function App() {
 
   const handleUpdateUserProfile = ({ name, avatar }) => {
     const token = localStorage.getItem("jwt");
-    api
+    return api
       .updateUserProfile({ name, avatar }, token)
       .then((updatedUser) => {
         setCurrentUser(updatedUser);
-        setIsEditProfileModalOpen(false);
         console.log("User profile updated:", updatedUser);
+        return updatedUser; // Return updatedUser to indicate success
       })
       .catch((error) => {
         console.error("Error updating profile:", error);
+        throw error; // Throw error to propagate to caller for handling
       });
   };
 

@@ -1,5 +1,4 @@
 // EditProfileModal.jsx //
-
 import React, { useContext, useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
@@ -16,8 +15,9 @@ const EditProfileModal = ({ isOpen, onClose, onUpdateUserProfile }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onUpdateUserProfile({ name, avatar }); // Call onUpdateUserProfile with updated data
-    onClose(); // Close the modal after update
+    onUpdateUserProfile({ name, avatar }).then(() => {
+      onClose(); // Close the modal after successful update
+    });
   };
 
   return (
