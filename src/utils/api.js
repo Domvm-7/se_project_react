@@ -62,6 +62,34 @@ const api = {
       return Promise.reject(`Error: ${res.status}`);
     });
   },
+
+  addCardLike: (id, token) => {
+    return fetch(`${baseUrl}/items/${id}/likes`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error: ${res.status}`);
+    });
+  },
+
+  removeCardLike: (id, token) => {
+    return fetch(`${baseUrl}/items/${id}/likes`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error: ${res.status}`);
+    });
+  },
 };
 
 export default api;
