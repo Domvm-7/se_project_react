@@ -1,8 +1,19 @@
 .card__name {
+  width: 73px;
+  height: 24px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000000;
+  opacity: 0.6;
   text-align: center;
+  background-color: #ffffff;
+  padding-top: 3px;
+  border-radius: 4px;
   position: relative;
   top: 60px;
-  right: 15px;
+  left: 110px;
 }
 
 .card__image {
@@ -17,8 +28,9 @@
   width: 20px;
   height: 18px;
   position: relative;
-  bottom: 295px;
-  right: 130px;
+  bottom: 292px;
+  right: 135px;
+  background: none;
 }
 
 .like-button:hover {
