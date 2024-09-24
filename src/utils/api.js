@@ -1,7 +1,7 @@
 // Api.js //
 import { processServerResponse } from "./utils";
 
-const baseUrl = "http://localhost:3001";
+import { baseUrl } from "../utils/constants";
 
 const api = {
   baseUrl: baseUrl,

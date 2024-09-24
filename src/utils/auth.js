@@ -1,7 +1,7 @@
 // Auth.js //
 import { Redirect } from "react-router-dom";
 
-const baseUrl = "http://localhost:3001";
+import { baseUrl } from "../utils/constants";
 
 const authApi = ({ children }) => {
   const token = localStorage.getItem("jwt");

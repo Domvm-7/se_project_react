@@ -95,3 +95,9 @@ export const weatherOptions = [
     type: "storm",
   },
 ];
+
+export { baseUrl };
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.wtwr-dvm.jumpingcrab.com"
+    : "http://localhost:3001";
