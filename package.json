@@ -19,7 +19,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "npm run build && scp -r ./dist/* Domvm_7@wtwr-dvm.jumpingcrab.com:/home/Domvm_7/frontend"
+    "deploy": "npm run build && scp -r ./build/* Domvm_7@wtwr-dvm.jumpingcrab.com:/home/Domvm_7/frontend"
   },
   "eslintConfig": {
     "extends": [
