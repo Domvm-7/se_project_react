@@ -9,7 +9,19 @@ const SideBar = ({ onEditProfile, onSignOut, isLoggedIn }) => {
   return (
     <div className="sidebar">
       <div className="sidebar__top">
-        <img className="sidebar__avatar" src={avatar} alt="avatar" />
+        {currentUser && currentUser.avatar ? (
+          <img
+            className="sidebar__avatar"
+            src={currentUser.avatar}
+            alt="avatar"
+          />
+        ) : (
+          <div className="sidebar__avatar-placeholder">
+            {currentUser && currentUser.name
+              ? currentUser.name.charAt(0).toUpperCase()
+              : "A"}
+          </div>
+        )}
         <h3 className="sidebar__name">
           {currentUser.name || "Dominic Martinez"}
         </h3>
