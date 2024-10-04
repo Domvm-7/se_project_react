@@ -17,6 +17,7 @@
   height: 56px;
   width: 56px;
   padding-right: 10px;
+  border-radius: 50%;
 }
 
 .sidebar__name {

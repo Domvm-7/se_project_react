@@ -17,13 +17,6 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-// Add crash-test route
-App.get("/crash-test", () => {
-  setTimeout(() => {
-    throw new Error("Server will crash now");
-  }, 0);
-});
-
 function App() {
   const [cards, setCards] = useState([]);
   const [activeModal, setActiveModal] = useState("");
