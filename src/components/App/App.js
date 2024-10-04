@@ -18,7 +18,7 @@ import LoginModal from "../LoginModal/LoginModal";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 // Add crash-test route
-app.get("/crash-test", () => {
+App.get("/crash-test", () => {
   setTimeout(() => {
     throw new Error("Server will crash now");
   }, 0);
